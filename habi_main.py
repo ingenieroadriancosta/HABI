@@ -10,6 +10,8 @@ app = Flask(__name__)
 @app.route('/api/consulta')
 def look_for_property():
     req = request.get_json()
+    if req is None :
+        return make_response({"Error": "Cuerpo inválido"}, 400)
     estado = ''
     res = {"OK": "Estado válido"}
     estado = req['state']
